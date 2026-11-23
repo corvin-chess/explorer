@@ -29,7 +29,7 @@ Planned Rust service to index and query opening trees from Corvin games only. In
 
 <p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=8FA3D9&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=GETTING+STARTED" alt="Getting Started" /></p>
 
-Planned. Clone instructions and crate entrypoints will land with the scaffold.
+Planned. Clone instructions and crate entrypoints will land with the Rust crate scaffold.
 
 <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0b0d12,35:8fa3d9,70:c9a227,100:0b0d12" width="100%" alt="" />
 
@@ -37,7 +37,7 @@ Planned. Clone instructions and crate entrypoints will land with the scaffold.
 
 <p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=8FA3D9&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=DEVELOPMENT" alt="Development" /></p>
 
-Planned. Indexing, query API, and HTTP or embedded serving workflows will be documented when the scaffold exists.
+Planned. Indexing, query API, and HTTP or embedded serving workflows will be documented when the Rust crate scaffold exists.
 
 <img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0b0d12,35:8fa3d9,70:c9a227,100:0b0d12" width="100%" alt="" />
 
@@ -68,6 +68,8 @@ Planned structure: game indexer, position key store, query API, and HTTP or serv
 | Area | State |
 |---|---|
 | README | Built |
+| LICENSE | Built |
+| CI verify gate | Built |
 | Crate scaffold | Planned |
 | Game index | Planned |
 | Query API | Planned |
@@ -78,7 +80,7 @@ Planned structure: game indexer, position key store, query API, and HTTP or serv
 
 <br/>
 
-<p align="center"><sub><i>Openings become knowledge when every branch is counted from our own games.</i></sub></p>
+<p align="center"><sub><i>Every opening line earns its place by how Corvin games actually went.</i></sub></p>
 
 ## License
 

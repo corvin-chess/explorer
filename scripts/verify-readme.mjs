@@ -18,10 +18,12 @@ const REPO = "explorer"
 const SKILL = "rust"
 const LICENSE_ID = "AGPL-3.0-or-later"
 const CLOSING =
-  "Openings become knowledge when every branch is counted from our own games."
+  "Every opening line earns its place by how Corvin games actually went."
 
 const PLANNED_AREAS =
   /^(Crate scaffold|Game index|Query API|HTTP service|Implementation)$/i
+
+const BUILT_AREAS = /^(README|LICENSE|CI verify gate)$/i
 
 const fail = (msg) => {
   console.error(`FAIL: ${msg}`)
@@ -149,6 +151,8 @@ if (!statusTableMatch) {
   const table = statusTableMatch[0]
   const stateCells = [...table.matchAll(/\|\s*([^|\n]+)\s*\|\s*([^|\n]+)\s*\|/g)]
   let sawReadmeBuilt = false
+  let sawLicenseBuilt = false
+  let sawCiBuilt = false
   let sawImplPlanned = false
   for (const [, areaRaw, stateRaw] of stateCells) {
     const area = areaRaw.trim()
@@ -162,6 +166,15 @@ if (!statusTableMatch) {
     if (/^README$/i.test(area) && /^Built$/i.test(state)) {
       sawReadmeBuilt = true
     }
+    if (/^LICENSE$/i.test(area) && /^Built$/i.test(state)) {
+      sawLicenseBuilt = true
+    }
+    if (/^CI verify gate$/i.test(area) && /^Built$/i.test(state)) {
+      sawCiBuilt = true
+    }
+    if (BUILT_AREAS.test(area) && !/^Built$/i.test(state)) {
+      fail(`STATUS row "${area}" must be Built; got "${state}"`)
+    }
     if (PLANNED_AREAS.test(area) && !/^Planned$/i.test(state)) {
       fail(`STATUS row "${area}" must stay Planned until code exists; got "${state}"`)
     }
@@ -170,6 +183,8 @@ if (!statusTableMatch) {
     }
   }
   if (!sawReadmeBuilt) fail('STATUS must include "| README | Built |"')
+  if (!sawLicenseBuilt) fail('STATUS must include "| LICENSE | Built |"')
+  if (!sawCiBuilt) fail('STATUS must include "| CI verify gate | Built |"')
   if (!sawImplPlanned) fail('STATUS must include "| Implementation | Planned |"')
   if (!process.exitCode) ok("STATUS rows use Planned/Built correctly")
 }
